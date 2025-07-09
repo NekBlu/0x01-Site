@@ -1,314 +1,74 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maurizio Napoli | Cyber Defense</title>
-<link rel="icon" 
-    href="./logo.png" 
-    sizes="32x32" 
-    type="image/png">
-<link rel="apple-touch-icon" 
-    href="./logo.png" 
-    sizes="180x180">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
-<style>
-    /* Reset & base */
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-    html, body { height:100%; overflow:hidden; }
-    body {
-    position:relative;
-    font-family:'JetBrains Mono', monospace;
-    background:#1a1a1a;
-    color:#e0e0e0;
-    min-height:100vh;
-    }
-    @keyframes pulse { 50% { opacity:0.5; } }
-    @keyframes slideUpFadeIn { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
-
-    /* Header bar */
-    #header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    background: #1a1a1a;
-    border-bottom: 1px solid #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 1rem;
-    z-index: 3;
-    }
-    #header .logo {
-    font-size: 1.2rem;
-    color: #0f0;
-    animation: pulse 2s infinite;
-    text-decoration: none;
-    }
-
-    /* Hamburger */
-    #menu-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 30px;
-    height: 24px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    z-index: 4;
-    }
-    #menu-toggle .bar {
-    width: 100%;
-    height: 3px;
-    background: #fff;
-    border-radius: 2px;
-    }
-
-    /* Nav */
-    #header nav {
-    display: flex;
-    align-items: center;
-    }
-    #header nav a {
-    font-size: 1rem;
-    line-height: 1;
-    margin: 0 0.4rem;
-    }
-    #header nav a span {
-    display: inline-block;
-    color: #fff;
-    transition: color 0.03s ease;
-    transition-delay: calc(var(--delay-out)/2);
-    }
-    #header nav a:hover span {
-    color: #c084fc;
-    transition-delay: calc(var(--delay-in)/2);
-    }
-
-
-    /* Background commands */
-    #bg-commands {
-    position:absolute; top:0; left:0; width:100%; height:100%;
-    pointer-events:none; z-index:0; font-size:1rem;
-    line-height:1.5; color:#2a2a2a; opacity:0.8;
-    white-space:nowrap; overflow:hidden;
-    }
-    #bg-commands .cmdRow {
-    position:absolute; left:0; right:0; padding-left:1rem;
-    user-select:none;
-    }
-
-    /* Content */
-    .container {
-    position:relative; z-index:1;
-    display:flex; flex-direction:column;
-    justify-content:center; align-items:center;
-    padding:1rem; text-align:center;
-    min-height:calc(100vh - 50px); padding-top:60px;
-    }
-    #prompt {
-    display:flex; flex-wrap:wrap; justify-content:center;
-    align-items:baseline; font-size:1.5rem; margin-bottom:1rem;
-    }
-    #prompt span { margin:0 0.5rem; }
-    .NekBlu { color:#0f0; animation:pulse 2s infinite; }
-    .dollar { color:#9333ea; animation:pulse 2s infinite; }
-    .who-is, .name {
-    overflow:hidden; white-space:nowrap;
-    border-right:2px solid currentColor;
-    }
-    .who-is { color:#c084fc; }
-    .name { color:#fff; }
-    #hero-text {
-    max-width:600px; margin:1rem auto;
-    color:#c084fc; border-right:none!important;
-    white-space:pre-wrap;
-    }
-    #hero-text a {
-    color:#c084fc; text-decoration:none;
-    }
-
-    /* Social icons */
-    #socials {
-    display:flex; gap:1.5rem; margin-top:1.5rem;
-    justify-content:center; opacity:0;
-    }
-    #socials.slide-up {
-    animation:slideUpFadeIn 0.5s ease-out forwards;
-    }
-    #socials a {
-    display:flex; align-items:center;
-    color:#e0e0e0; text-decoration:none;
-    font-size:1.1rem;
-    }
-    #socials svg {
-    width:32px; height:32px; margin-right:0.5rem;
-    fill:#e0e0e0;
-    }
-    #socials a:hover svg,
-    #socials a:hover span {
-    fill:#c084fc; color:#c084fc;
-    }
-
-    /* Mobile */
-    @media (max-width:750px) {
-    html, body { overflow:auto; }
-    .container { min-height:auto; margin-top:35%; }
-    #header nav {
-        display:none; position:absolute; top:50px; left:0;
-        width:100%; background:#1a1a1a;
-        flex-direction:column; border-top:1px solid #fff;
-    }
-    #menu-toggle { display:flex; }
-    #header nav.open {
-        display:flex; align-items:flex-start;
-    }
-    #header nav.open a {
-        padding:0.75rem 1rem; width:100%;
-        text-align:left; border-bottom:1px solid #333;
-    }
-    }
-</style>
-</head>
-<body>
-<div id="header">
-    <a href="./" class="logo" aria-label="Vai a Whois">NekBlu</a>
-    <button id="menu-toggle" aria-label="Apri menu">
-    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-    </button>
+    <head>
+    <!-- Meta tags for character encoding and responsive design -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Page title -->
+    <title>Maurizio Napoli | Cyber Defense</title>
+    <!-- Favicon and Apple touch icon -->
+    <link rel="icon" href="./logo.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="./logo.png" sizes="180x180">
+    <!-- Google Fonts: JetBrains Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./CSS/contact.css">
+    </head>
+    <body>
+    <!-- Header with logo and navigation menu -->
+    <div id="header">
+        <a href="./" class="logo" aria-label="Vai a Whois">NekBlu</a>
+        <!-- Hamburger menu button for mobile navigation -->
+        <button id="menu-toggle" aria-label="Apri menu">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
     <nav>
-      <a href="./"><span style="--delay-in:0s;--delay-out:0.25s">/</span><span style="--delay-in:0.05s;--delay-out:0.2s">w</span><span style="--delay-in:0.1s;--delay-out:0.15s">h</span><span style="--delay-in:0.15s;--delay-out:0.1s">o</span><span style="--delay-in:0.2s;--delay-out:0.05s">i</span><span style="--delay-in:0.25s;--delay-out:0s">s</span></a>
-      <a href="./contact.html"><span style="--delay-in:0s;--delay-out:0.35s">/</span><span style="--delay-in:0.05s;--delay-out:0.3s">c</span><span style="--delay-in:0.1s;--delay-out:0.25s">o</span><span style="--delay-in:0.15s;--delay-out:0.2s">n</span><span style="--delay-in:0.2s;--delay-out:0.15s">t</span><span style="--delay-in:0.25s;--delay-out:0.1s">a</span><span style="--delay-in:0.3s;--delay-out:0.05s">c</span><span style="--delay-in:0.35s;--delay-out:0s">t</span></a>
+        <!-- Navigation links with animated spans for each character -->
+        <a href="./"><span style="--delay-in:0s;--delay-out:0.25s">/</span><span style="--delay-in:0.05s;--delay-out:0.2s">w</span><span style="--delay-in:0.1s;--delay-out:0.15s">h</span><span style="--delay-in:0.15s;--delay-out:0.1s">o</span><span style="--delay-in:0.2s;--delay-out:0.05s">i</span><span style="--delay-in:0.25s;--delay-out:0s">s</span></a>
+        <a href="./contact.html"><span style="--delay-in:0s;--delay-out:0.35s">/</span><span style="--delay-in:0.05s;--delay-out:0.3s">c</span><span style="--delay-in:0.1s;--delay-out:0.25s">o</span><span style="--delay-in:0.15s;--delay-out:0.2s">n</span><span style="--delay-in:0.2s;--delay-out:0.15s">t</span><span style="--delay-in:0.25s;--delay-out:0.1s">a</span><span style="--delay-in:0.3s;--delay-out:0.05s">c</span><span style="--delay-in:0.35s;--delay-out:0s">t</span></a>
     </nav>
-</div>
-
-<div id="bg-commands"></div>
-
-<div class="container">
-    <div id="hero">
-    <div id="prompt">
-        <span class="NekBlu">NekBlu</span>
-        <span class="dollar">$</span>
-        <span class="who-is" id="who-is"></span>
-        <span class="name" id="name"></span>
     </div>
-    <div id="hero-text"></div>
-    <div id="socials">
-        <a href="https://github.com/NekBlu" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.92.57.1.78-.25.78-.56v-2.23c-3.2.7-3.87-1.54-3.87-1.54-.52-1.34-1.27-1.7-1.27-1.7-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.76 2.68 1.25 3.33.95.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a11.01 11.01 0 012.87-.39c.97 0 1.95.13 2.87.39 2.18-1.5 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.41-5.27 5.69.42.36.79 1.08.79 2.18v3.24c0 .31.21.66.79.56A10.52 10.52 0 0023.5 12C23.5 5.73 18.27.5 12 .5z"/>
-        </svg>
-        <span>GitHub</span>
-        </a>
-        <a href="https://www.linkedin.com/in/maurizio-napoli-cyber-defence/" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M4.98 3.5C3.34 3.5 2 4.84 2 6.48s1.34 2.98 2.98 2.98S7.96 8.12 7.96 6.48 6.62 3.5 4.98 3.5zM2.4 21.5H7.6V9H2.4v12.5zM9.79 9h4.92v1.71h.07c.69-1.3 2.37-2.67 4.87-2.67 5.21 0 6.17 3.43 6.17 7.89v9.05h-5.2v-8.03c0-1.91-.03-4.37-2.66-4.37-2.66 0-3.07 2.08-3.07 4.24v8.16h-5.2V9z"/>
-        </svg>
-        <span>LinkedIn</span>
-        </a>
-        <a href="https://discord.com/users/294103515964506112" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.0371c-1.6.3647-3.177 0.9135-4.8852 1.5152a.0697.0697 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1905.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.101.246.1981.3728.2924a.077.077 0 01-.0066.1276c-.598.3438-1.2205.6457-1.873.8933a.0766.0766 0 00-.0407.1056c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5218 6.0023-3.0294a.077.077 0 00.0312-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6603a.061.061 0 00-.0312-.0286zM8.0204 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.4189 0 1.3333-.9555 2.419-2.1569 2.419zm7.9749 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.4189 0 1.3333-.946 2.419-2.1568 2.419Z"/>
-        </svg>
-        <span>Discord</span>
-        </a>
+
+    <!-- Background commands effect -->
+    <div id="bg-commands"></div>
+
+    <!-- Main container -->
+    <div class="container">
+        <div id="hero">
+        <!-- Terminal-like prompt -->
+        <div id="prompt">
+            <span class="NekBlu">NekBlu</span>
+            <span class="dollar">$</span>
+            <span class="who-is" id="who-is"></span>
+            <span class="name"   id="name"></span>
+        </div>
+        <!-- Hero text (possibly filled by JavaScript) -->
+        <div id="hero-text"></div>
+        <!-- Social media links with SVG icons -->
+        <div id="socials">
+            <a href="https://github.com/NekBlu" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.92.57.1.78-.25.78-.56v-2.23c-3.2.7-3.87-1.54-3.87-1.54-.52-1.34-1.27-1.7-1.27-1.7-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.76 2.68 1.25 3.33.95.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a11.01 11.01 0 012.87-.39c.97 0 1.95.13 2.87.39 2.18-1.5 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.41-5.27 5.69.42.36.79 1.08.79 2.18v3.24c0 .31.21.66.79.56A10.52 10.52 0 0023.5 12C23.5 5.73 18.27.5 12 .5z"/>
+            </svg>
+            <span>GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/maurizio-napoli-cyber-defence/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4.98 3.5C3.34 3.5 2 4.84 2 6.48s1.34 2.98 2.98 2.98S7.96 8.12 7.96 6.48 6.62 3.5 4.98 3.5zM2.4 21.5H7.6V9H2.4v12.5zM9.79 9h4.92v1.71h.07c.69-1.3 2.37-2.67 4.87-2.67 5.21 0 6.17 3.43 6.17 7.89v9.05h-5.2v-8.03c0-1.91-.03-4.37-2.66-4.37-2.66 0-3.07 2.08-3.07 4.24v8.16h-5.2V9z"/>
+            </svg>
+            <span>LinkedIn</span>
+            </a>
+            <a href="https://discord.com/users/294103515964506112" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.0371c-1.6.3647-3.177 0.9135-4.8852 1.5152a.0697.0697 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1905.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.101.246.1981.3728.2924a.077.077 0 01-.0066.1276c-.598.3438-1.2205.6457-1.873.8933a.0766.0766 0 00-.0407.1056c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5218 6.0023-3.0294a.077.077 0 00.0312-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6603a.061.061 0 00-.0312-.0286zM8.0204 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.4189 0 1.3333-.9555 2.419-2.1569 2.419zm7.9749 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.4189 0 1.3333-.946 2.419-2.1568 2.419Z"/>
+            </svg>
+            <span>Discord</span>
+            </a>
+        </div>
+        </div>
     </div>
-    </div>
-</div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-    const commands = ['ls','alias','unalias','cat','tree','pwd','nmap','hashcat','touch','sudo','cd','ping','echo','netstat','mkdir','rmdir','grep','traceroute','cp','mv','chmod','wireshark','htop','ifconfig','unzip','ps','kill','vim','tail','head','whoami','whois','find','wget'];
-    const bg = document.getElementById('bg-commands');
-    let resizeTimeout;
-    function generateBg() {
-        bg.innerHTML = '';
-        const lineH = parseFloat(getComputedStyle(bg).lineHeight);
-        const rows = Math.ceil(window.innerHeight/lineH)+1;
-        const minW = window.innerWidth;
-        const measure = document.createElement('span');
-        measure.style.visibility = 'hidden';
-        measure.style.position = 'absolute';
-        document.body.appendChild(measure);
-        for (let y = 0; y < rows; y++) {
-        const shuffled = commands.slice().sort(() => 0.5 - Math.random());
-        const base = shuffled.join(' ');
-        let txt = base;
-        measure.textContent = txt;
-        let w = measure.getBoundingClientRect().width;
-        while (w < minW) {
-            txt += ' ' + base;
-            measure.textContent = txt;
-            w = measure.getBoundingClientRect().width;
-            }
-            const div = document.createElement('div');
-            div.className = 'cmdRow';
-          div.style.top = (y * lineH) + 'px';
-        div.textContent = txt;
-        bg.appendChild(div);
-        }
-        document.body.removeChild(measure);
-        }
-        generateBg();
-        window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(generateBg, 200);
-    });
-
-    const typewriter = (el, text, speed, cb) => {
-        let i = 0;
-        el.style.borderRight = '2px solid currentColor';
-        el.textContent = '';
-        const t = setInterval(() => {
-        if (i < text.length) {
-            el.textContent += text[i++];
-        } else {
-            clearInterval(t);
-            el.style.borderRight = 'none';
-            if (cb) cb();
-        }
-        }, speed);
-    };
-    const who = document.getElementById('who-is');
-    const name = document.getElementById('name');
-    const heroText = document.getElementById('hero-text');
-
-    setTimeout(() => {
-        typewriter(who, 'cat ', 100, () => {
-        setTimeout(() => {
-            typewriter(name, 'contact.txt', 100, () => {
-            setTimeout(() => {
-                typewriter(heroText, 'Potete contattarmi all\'indirizzo mail ', 50, () => {
-                const link = document.createElement('a');
-                link.textContent = '';
-                heroText.appendChild(link);
-                typewriter(link, 'maurizio.napoli@nekblu.com', 50, () => {
-                    link.href = 'mailto:maurizio.napoli@nekblu.com';
-                    setTimeout(() => {
-                    document.getElementById('socials').classList.add('slide-up');
-                    }, 500);
-                });
-                });
-            }, 250);
-            });
-        }, 250);
-        });
-    }, 250);
-
-    const toggle = document.getElementById('menu-toggle');
-    const nav = document.querySelector('#header nav');
-    toggle.addEventListener('click', () => {
-        nav.classList.toggle('open');
-        toggle.setAttribute(
-        'aria-label',
-        nav.classList.contains('open') ? 'Chiudi menu' : 'Apri menu'
-        );
-    });
-    });
-</script>
-</body>
-</html>
+    <!-- JavaScript for page functionality -->
+    <script src="./JS/contact.js"></script>
+    </body>
+</html></svg>
