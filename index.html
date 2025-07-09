@@ -1,127 +1,80 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-  <meta charset="UTF-8">
-   <!-- SEO base -->
-  <title>NekBlu | Cyber Defense Specialist</title>
-  <meta name="description" content="Portfolio e risorse di NekBlu, specialista in Cyber Defense, ethical hacking e sicurezza informatica.">
-  <meta name="keywords" content="Cyber Security, Ethical Hacking, Penetration Testing, Cyber Defense, NekBlu">
-  <meta name="author" content="NekBlu">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Logo e favicon -->
-  <link rel="icon" href="https://nekblu.com/logo.png" type="image/png">
-  
-  <!-- Dati strutturati Schema.org (tipo: Person) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "NekBlu",
-    "url": "https://nekblu.com",
-    "image": "https://nekblu.com/logo.png",
-    "jobTitle": "Cyber Defense Specialist",
-    "sameAs": [
-      "https://github.com/nekblu"
-    ]
-  }
-  </script>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
-  <style>
-    /* Reset & base */
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-    html, body { height:100%; overflow: hidden; }
-    body {
-      position: relative;
-      font-family:'JetBrains Mono', monospace;
-      background:#1a1a1a;
-      color:#e0e0e0;
-      min-height:100vh;
+  <head>
+    <meta charset="UTF-8">
+    <!-- Basic SEO meta tags -->
+    <title>NekBlu | Cyber Defense Specialist</title>
+    <meta name="description" content="Portfolio e risorse di NekBlu, specialista in Cyber Defense, ethical hacking e sicurezza informatica.">
+    <meta name="keywords" content="Cyber Security, Ethical Hacking, Penetration Testing, Cyber Defense, NekBlu">
+    <meta name="author" content="NekBlu">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Logo and favicon -->
+    <link rel="icon" href="https://nekblu.com/logo.png" type="image/png">
+
+    <!-- Google Font: JetBrains Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
+
+    <!-- Schema.org structured data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "NekBlu",
+      "url": "https://nekblu.com",
+      "image": "https://nekblu.com/logo.png",
+      "jobTitle": "Cyber Defense Specialist",
+      "sameAs": [
+        "https://github.com/nekblu"
+      ]
     }
-    @keyframes pulse { 50% { opacity: 0.5; } }
+    </script>
 
-    /* Header bar */
-    #header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 50px;
-      background: #1a1a1a;
-      border-bottom: 1px solid #fff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 1rem;
-      z-index: 3;
-    }
-    #header .logo { font-size:1.2rem; color:#0f0; animation:pulse 2s infinite; text-decoration: none;}
+    <!-- External CSS file -->
+    <link rel="stylesheet" href="./CSS/index.css">
+  </head>
+  <body>
+    <!-- Header with logo and navigation menu -->
+    <div id="header">
+      <a href="./" class="logo" aria-label="Vai a Whois">NekBlu</a>
+      <button id="menu-toggle" aria-label="Apri menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <nav>
+        <!-- Animated navigation links -->
+        <a href="./"><span style="--delay-in:0s;--delay-out:0.25s">/</span><span style="--delay-in:0.05s;--delay-out:0.2s">w</span><span style="--delay-in:0.1s;--delay-out:0.15s">h</span><span style="--delay-in:0.15s;--delay-out:0.1s">o</span><span style="--delay-in:0.2s;--delay-out:0.05s">i</span><span style="--delay-in:0.25s;--delay-out:0s">s</span></a>
+        <a href="./contact.html"><span style="--delay-in:0s;--delay-out:0.35s">/</span><span style="--delay-in:0.05s;--delay-out:0.3s">c</span><span style="--delay-in:0.1s;--delay-out:0.25s">o</span><span style="--delay-in:0.15s;--delay-out:0.2s">n</span><span style="--delay-in:0.2s;--delay-out:0.15s">t</span><span style="--delay-in:0.25s;--delay-out:0.1s">a</span><span style="--delay-in:0.3s;--delay-out:0.05s">c</span><span style="--delay-in:0.35s;--delay-out:0s">t</span></a>
+      </nav>
+    </div>
 
-    /* Hamburger */
-    #menu-toggle { display:none; flex-direction:column; justify-content:space-around; width:30px; height:24px; background:transparent; border:none; cursor:pointer; padding:0; z-index:4; }
-    #menu-toggle .bar { width:100%; height:3px; background:#fff; border-radius:2px; }
+    <!-- Background commands animation -->
+    <div id="bg-commands"></div>
+    <div class="container">
+      <!-- Hero section with animated prompt -->
+      <div id="hero">
+        <div id="prompt">
+          <span class="NekBlu">NekBlu</span>
+          <span class="dollar">$</span>
+          <span class="who-is" id="who-is"></span>
+          <span class="name" id="name"></span>
+        </div>
+        <div id="hero-text"></div>
+      </div>
+      <!-- About section with animated prompt -->
+      <div id="about">
+        <div id="about-prompt">
+          <span class="NekBlu">NekBlu</span>
+          <span class="dollar">$</span>
+          <span class="who-is" id="about-who"></span>
+          <span class="name" id="about-name"></span>
+        </div>
+        <div id="about-text"></div>
+      </div>
+    </div>
 
-    /* Nav */
-    #header nav { display:flex; align-items:center; }
-    #header nav a { font-size:1rem; line-height:1; margin:0 0.4rem; }
-    #header nav a span { display:inline-block; color:#fff; transition:color 0.03s ease; transition-delay:calc(var(--delay-out)/2); }
-    #header nav a:hover span { color:#c084fc; transition-delay:calc(var(--delay-in)/2); }
-
-    /* Background commands */
-    #bg-commands { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; font-size:1rem; line-height:1.5; color:#2a2a2a; opacity:0.8; white-space:nowrap; overflow:hidden; }
-    #bg-commands .cmdRow { position:absolute; left:0; right:0; padding-left:1rem; user-select:none; overflow:hidden; text-overflow:clip; }
-
-    /* Content */
-    .container { position:relative; z-index:1; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:1rem; text-align:center; min-height:calc(100vh - 50px); padding-top:60px; }
-    #prompt, #about-prompt { display:flex; flex-wrap:wrap; justify-content:center; align-items:baseline; margin-bottom:1rem; }
-    #prompt { font-size:1.5rem; }
-    #about-prompt { font-size:1.2rem; margin:1.5rem 0 1rem; visibility:hidden; }
-    #prompt span, #about-prompt span { margin:0 0.5rem; }
-    .NekBlu { color:#0f0; animation:pulse 2s infinite;}
-    .dollar { color:#9333ea; animation:pulse 2s infinite; }
-    .who-is, .name { overflow:hidden; white-space:nowrap; border-right:2px solid currentColor; }
-    .who-is { color:#c084fc; }
-    .name { color:#fff; }
-    #hero-text, #about-text { max-width:600px; margin:1rem auto; color:#c084fc; border-right:none!important; white-space:pre-wrap; }
-    #about-text { max-width:450px; }
-
-    /* Mobile */
-    @media (max-width:750px) {
-      html, body { overflow:auto; }
-      .container { min-height:auto; margin-top: 35%;}
-      #header nav { display:none; position:absolute; top:50px; left:0; width:100%; background:#1a1a1a; flex-direction:column; border-top:1px solid #fff; }
-      #menu-toggle { display:flex; }
-      #header nav.open { display:flex; align-items:flex-start; }
-      #header nav.open a { padding:0.75rem 1rem; width:100%; text-align:left; border-bottom:1px solid #333; }
-    }
-  </style>
-</head>
-<body>
-  <div id="header">
-    <a href="./" class="logo" aria-label="Vai a Whois">NekBlu</a>
-    <button id="menu-toggle" aria-label="Apri menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
-    <nav>
-      <a href="./"><span style="--delay-in:0s;--delay-out:0.25s">/</span><span style="--delay-in:0.05s;--delay-out:0.2s">w</span><span style="--delay-in:0.1s;--delay-out:0.15s">h</span><span style="--delay-in:0.15s;--delay-out:0.1s">o</span><span style="--delay-in:0.2s;--delay-out:0.05s">i</span><span style="--delay-in:0.25s;--delay-out:0s">s</span></a>
-      <a href="./contact.html"><span style="--delay-in:0s;--delay-out:0.35s">/</span><span style="--delay-in:0.05s;--delay-out:0.3s">c</span><span style="--delay-in:0.1s;--delay-out:0.25s">o</span><span style="--delay-in:0.15s;--delay-out:0.2s">n</span><span style="--delay-in:0.2s;--delay-out:0.15s">t</span><span style="--delay-in:0.25s;--delay-out:0.1s">a</span><span style="--delay-in:0.3s;--delay-out:0.05s">c</span><span style="--delay-in:0.35s;--delay-out:0s">t</span></a>
-    </nav>
-  </div>
-  <div id="bg-commands"></div>
-  <div class="container">
-    <div id="hero"><div id="prompt"><span class="NekBlu">NekBlu</span><span class="dollar">$</span><span class="who-is" id="who-is"></span><span class="name" id="name"></span></div><div id="hero-text"></div></div>
-    <div id="about"><div id="about-prompt"><span class="NekBlu">NekBlu</span><span class="dollar">$</span><span class="who-is" id="about-who"></span><span class="name" id="about-name"></span></div><div id="about-text"></div></div>
-  </div>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const commands=['ls','alias','unalias','cat','tree','pwd','nmap','hashcat','touch','sudo','cd','ping','echo','netstat','mkdir','rmdir','grep','traceroute','cp','mv','chmod','wireshark','htop','ifconfig','unzip','ps','kill','vim','tail','head','whoami','whois','find','wget'];
-      const bg=document.getElementById('bg-commands');let resizeTimeout;
-      function generateBg(){bg.innerHTML='';const lineH=parseFloat(getComputedStyle(bg).lineHeight);const rows=Math.ceil(window.innerHeight/lineH)+1;const minW=window.innerWidth;const measure=document.createElement('span');measure.style.visibility='hidden';measure.style.position='absolute';document.body.appendChild(measure);
-        for(let y=0;y<rows;y++){const shuffled=commands.slice().sort(()=>0.5-Math.random());const base=shuffled.join(' ');let txt=base;measure.textContent=txt;let w=measure.getBoundingClientRect().width;while(w<minW){txt+=' '+base;measure.textContent=txt;w=measure.getBoundingClientRect().width;}const div=document.createElement('div');div.className='cmdRow';div.style.top=(y*lineH)+'px';div.textContent=txt;bg.appendChild(div);}document.body.removeChild(measure);}
-      generateBg();window.addEventListener('resize',()=>{clearTimeout(resizeTimeout);resizeTimeout=setTimeout(generateBg,200);});
-      const typewriter=(el,text,speed,cb)=>{let i=0;el.style.borderRight='2px solid currentColor';el.textContent='';const t=setInterval(()=>{if(i<text.length) el.textContent+=text[i++];else{clearInterval(t);el.style.borderRight='none';if(cb)cb();}},speed);};
-      const who=document.getElementById('who-is'),name=document.getElementById('name'),heroText=document.getElementById('hero-text');
-      setTimeout(()=>{typewriter(who,'whois ',100,()=>{setTimeout(()=>{typewriter(name,'Maurizio Napoli',100,()=>{setTimeout(()=>{typewriter(heroText,'Cyber Defense Specialist | Informatico in evoluzione',50,()=>{document.getElementById('about-prompt').style.visibility='visible';typewriter(document.getElementById('about-who'),'cat',100,()=>{setTimeout(()=>{typewriter(document.getElementById('about-name'),'maurizio_napoli.txt',100,()=>{setTimeout(()=>{typewriter(document.getElementById('about-text'),'Sono Maurizio Napoli,\nspecialista in cybersecurity\ncon passione per la protezione\ndei sistemi digitali.',50);},250);});},250);});});},250);});},250);});},250);
-      const toggle=document.getElementById('menu-toggle'),nav=document.querySelector('#header nav');toggle.addEventListener('click',()=>{nav.classList.toggle('open');toggle.setAttribute('aria-label',nav.classList.contains('open')?'Chiudi menu':'Apri menu');});
-    });
-  </script>
-</body>
+    <!-- External JavaScript file -->
+    <script src="./JS/index.js"></script>
+  </body>
 </html>
