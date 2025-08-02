@@ -1,78 +1,70 @@
-// Wait for the DOM to be fully loaded before running the script
-document.addEventListener('DOMContentLoaded', () => {
-    // List of command names to display in the background
-    const commands = [
-        'ls','alias','unalias','cat','tree','pwd','nmap','hashcat','touch','sudo',
-        'cd','ping','echo','netstat','mkdir','rmdir','grep','traceroute','cp',
-        'mv','chmod','wireshark','htop','ifconfig','unzip','ps','kill','vim',
-        'tail','head','whoami','whois','find','wget'
-    ];
-    // Get the background element where commands will be displayed
-    const bg = document.getElementById('bg-commands');
-
-    // Function to generate the background with random command rows
-    function generateBg() {
-        bg.innerHTML = ''; // Clear previous content
-        const lineH = parseFloat(getComputedStyle(bg).lineHeight); // Get line height
-        const rows = Math.ceil(window.innerHeight / lineH) + 1; // Calculate number of rows needed
-        for (let y = 0; y < rows; y++) {
-            // Shuffle commands and join them into a string, repeat 10 times per row
-            const txt = Array(10).fill(commands.sort(() => 0.5 - Math.random()).join(' ')).join(' ');
-            const div = document.createElement('div'); // Create a new div for the row
-            div.className = 'cmdRow'; // Assign class for styling
-            div.style.top = (y * lineH) + 'px'; // Position the row vertically
-            div.textContent = txt; // Set the text content
-            bg.appendChild(div); // Add the row to the background
-        }
-    }
-
-    generateBg(); // Generate the background initially
-    // Regenerate the background on window resize (with debounce)
-    window.addEventListener('resize', () => setTimeout(generateBg, 200));
-
-    // Typewriter effect function for animating text
-    function typewriter(el, text, speed, cb) {
-        let i = 0;
-        el.style.borderRight = '2px solid currentColor'; // Show cursor
-        el.textContent = ''; // Clear previous text
-        const t = setInterval(() => {
-            if (i < text.length) el.textContent += text[i++]; // Add next character
-            else {
-                clearInterval(t); // Stop interval when done
-                el.style.borderRight = 'none'; // Hide cursor
-                if (cb) cb(); // Call callback if provided
-            }
-        }, speed);
-    }
-
-    // Get references to elements for the typewriter animation
-    const who = document.getElementById('who-is'),
-        name = document.getElementById('name'),
-        heroText = document.getElementById('hero-text');
-
-    // Sequence of typewriter animations with delays and callbacks
-    setTimeout(() => {
-        typewriter(who, 'whois ', 100, () => {
-            typewriter(name, 'Maurizio Napoli', 100, () => {
-                typewriter(heroText, 'Cyber Defense Specialist | Informatico in evoluzione', 50, () => {
-                    document.getElementById('about-prompt').style.visibility = 'visible';
-                    typewriter(document.getElementById('about-who'), 'cat', 100, () => {
-                        typewriter(document.getElementById('about-name'), 'maurizio_napoli.txt', 100, () => {
-                            typewriter(document.getElementById('about-text'),
-                                'Sono Maurizio Napoli,\nspecialista in cybersecurity\ncon passione per la protezione\ndei sistemi digitali.', 50);
-                        });
-                    });
-                });
+// Smooth scrolling per i link di navigazione
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
-        });
-    }, 250);
+        }
+    });
+});
 
-    // Toggle navigation menu on mobile when menu button is clicked
-    document.getElementById('menu-toggle').onclick = () => {
-        const nav = document.querySelector('#header nav');
-        nav.classList.toggle('open'); // Toggle 'open' class
-        // Update aria-label for accessibility
-        document.getElementById('menu-toggle').setAttribute('aria-label',
-            nav.classList.contains('open') ? 'Chiudi menu' : 'Apri menu');
-    };
+// Effetto di scroll sull'header
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    if (window.scrollY > 100) {
+        header.style.background = 'rgba(10, 14, 39, 0.95)';
+        header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+    } else {
+        header.style.background = 'rgba(10, 14, 39, 0.8)';
+        header.style.boxShadow = 'none';
+    }
+});
+
+// Animazione di apparizione per le card
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+// Applica l'osservatore alle card
+document.querySelectorAll('.skill-card, .cert-card').forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(card);
+});
+
+// Effetto ripple sui pulsanti
+document.querySelectorAll('.btn').forEach(button => {
+    button.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        ripple.classList.add('ripple');
+        
+        this.appendChild(ripple);
+        
+        setTimeout(() => {
+            ripple.remove();
+        }, 600);
+    });
 });
