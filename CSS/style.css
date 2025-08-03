@@ -1078,6 +1078,7 @@ html {
   line-height: 1.8;
   margin-bottom: var(--space-20);
   color: var(--color-text-secondary);
+  text-align: center;
 }
 
 .stats-grid {
